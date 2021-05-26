@@ -1,0 +1,14 @@
+<div class="dice-body">
+  <div *ngIf="_face"
+       class="dice-face"
+       [ngClass]="{
+          '_animation-right': _randomIndex > -1,
+          '_animation-top': _randomIndex > 1,
+          '_animation-bottom': _randomIndex > 3
+       }"
+       [ngStyle]="{
+          'border-color': dice.borderColor,
+          'background': ('url(' + dice.backgroundUrl + ') ' + (visiblePreviousRoll ? _previousFace.posX : _face.posX) + ' ' + (visiblePreviousRoll ? _previousFace.posY : _face.posY))
+       }">
+  </div>
+</div>

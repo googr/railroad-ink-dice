@@ -1,0 +1,119 @@
+.main {
+  max-width: 220px;
+  margin: 0 auto;
+  transition: height linear 0.3s;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.main-bg-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-image: url("../assets/bg-blue.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  overflow: auto;
+
+  &._red {
+    background-image: url("../assets/bg-red.jpg");
+
+    button, .radio label._selected {
+      background: linear-gradient(-40deg, #be321f, #f24562);
+      //background-color: #be321f;
+    }
+  }
+}
+
+.dice-tray {
+  display: grid;
+  grid-template-columns: 100px 100px;
+  justify-content: center;
+  gap: 10px;
+  margin: 18px;
+}
+
+button {
+  box-shadow: 0px 0px 13px rgba(0, 0, 0, 50%);
+  width: 100%;
+  background: linear-gradient(40deg, #4e3173, #8558a2);
+  display: block;
+  color: white;
+  font-size: 1rem;
+  text-shadow: none;
+  line-height: 1.2;
+  padding: 26px 16px;
+  position: relative;
+  border-radius: 4px;
+  border: 3px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: none !important;
+  text-align: center;
+  margin: 0 auto;
+
+  &:active {
+    margin-top: 2px;
+  }
+
+  &._small {
+    width: auto;
+    padding: 3px 6px;
+    font-size: smaller;
+    margin: 24px auto;
+  }
+}
+
+.addons-control {
+  margin: 20px 0 40px 0;
+
+  .radio {
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08);
+    background: #454857;
+    padding: 4px;
+    border-radius: 3px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    //._first{
+    //  flex: 100%;
+    //}
+    > * {
+      flex: 50%;
+    }
+  }
+
+  .radio input {
+    display: none;
+  }
+
+  .radio label {
+    text-align: center;
+    width: auto;
+    height: 100%;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 2px;
+    padding: 4px 8px;
+    background: #454857;
+    color: #fff;
+    font-size: 14px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    transition: all 100ms linear;
+  }
+
+  .radio label._selected {
+    background: linear-gradient(-40deg, #4e3173, #8558a2);
+    color: #fff;
+    box-shadow: 0 1px 1px #0000002e;
+    text-shadow: 0 1px 0px #79485f7a;
+  }
+}

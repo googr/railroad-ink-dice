@@ -1,0 +1,45 @@
+<div class="main-bg-wrapper"
+     [ngClass]="{ '_red': _selectedAddon == (_addonEnum.volcano) || _selectedAddon == (_addonEnum.meteor)}">
+  <div class="main">
+    <div class="addons-control">
+      <div class="radio">
+        <ng-container *ngFor="let addon of _addons; let first = first">
+          <label [ngClass]="{'_selected': _selectedAddon == addon, '_first': first}">
+            {{addon}}
+            <input type="radio"
+                   name="{{addon}}"
+                   value="{{addon}}"
+                   [(ngModel)]="_selectedAddon" (ngModelChange)="_addonChanged()"/>
+          </label>
+        </ng-container>
+      </div>
+    </div>
+    <div class="dice-tray">
+      <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.baseA"></app-dice>
+      <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.baseA"></app-dice>
+      <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.baseA"></app-dice>
+      <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.baseB"></app-dice>
+      <ng-container *ngIf="_selectedAddon == _addonEnum.river">
+        <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.river"></app-dice>
+        <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.river"></app-dice>
+      </ng-container>
+      <ng-container *ngIf="_selectedAddon == _addonEnum.lake">
+        <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.lake"></app-dice>
+        <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.lake"></app-dice>
+      </ng-container>
+      <ng-container *ngIf="_selectedAddon == _addonEnum.volcano">
+        <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.volcano"></app-dice>
+        <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.volcano"></app-dice>
+      </ng-container>
+      <ng-container *ngIf="_selectedAddon == _addonEnum.meteor">
+        <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.meteorA"></app-dice>
+        <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.meteorB"></app-dice>
+      </ng-container>
+    </div>
+    <button *ngIf="!_visiblePreviousRoll" (click)="_rollDices()">ROLL</button>
+    <button class="_small" (click)="_visiblePreviousRoll = !_visiblePreviousRoll">
+      {{_visiblePreviousRoll ? 'Current' : 'Previous'}} roll
+    </button>
+  </div>
+
+</div>

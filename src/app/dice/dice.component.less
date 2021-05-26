@@ -1,0 +1,68 @@
+
+.dice-body {
+  position: relative;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  border-radius: 14px;
+  box-shadow: 0px 0px 13px rgba(0, 0, 0, 50%);
+}
+
+.dice-face {
+  box-sizing: border-box;
+  left: 0;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 1px solid gray;
+  border-radius: 14px;
+  animation: from-left 0.3s cubic-bezier(.47, 1.64, .41, .8);
+
+  &._animation-right {
+    animation: from-right 0.3s cubic-bezier(.47, 1.64, .41, .8);
+  }
+
+  &._animation-top {
+    animation: from-top 0.3s cubic-bezier(.47, 1.64, .41, .8);
+  }
+
+  &._animation-bottom {
+    animation: from-bottom 0.3s cubic-bezier(.47, 1.64, .41, .8);
+  }
+}
+
+@keyframes from-left {
+  from {
+    left: -100px;
+  }
+  to {
+    left: 0;
+  }
+}
+
+@keyframes from-right {
+  from {
+    left: 300px;
+  }
+  to {
+    left: 0;
+  }
+}
+
+@keyframes from-top {
+  from {
+    top: -300px;
+  }
+  to {
+    top: 0;
+  }
+}
+
+@keyframes from-bottom {
+  from {
+    top: 300px;
+  }
+  to {
+    top: 0;
+  }
+}
