@@ -21,10 +21,20 @@
 
   &._red {
     background-image: url("../assets/bg-red.jpg");
-
     button, .radio label._selected {
-      background: linear-gradient(-40deg, #be321f, #f24562);
-      //background-color: #be321f;
+      background: linear-gradient(-40deg, #ff6a00, #f24562de);
+    }
+  }
+  &._green {
+    background-image: url("../assets/bg-green.jpg");
+    button, .radio label._selected {
+      background: linear-gradient(-40deg, #4e6d5d, #216d3ce8);
+    }
+  }
+  &._yellow {
+    background-image: url("../assets/bg-yellow.jpg");
+    button, .radio label._selected {
+      background: linear-gradient(-40deg, #eabc2f, #ff8f05db);
     }
   }
 }
@@ -40,7 +50,7 @@
 button {
   box-shadow: 0px 0px 13px rgba(0, 0, 0, 50%);
   width: 100%;
-  background: linear-gradient(40deg, #4e3173, #8558a2);
+  background: linear-gradient(40deg, #3885c7, #6358a2d9);
   display: block;
   color: white;
   font-size: 1rem;
@@ -70,13 +80,14 @@ button {
 }
 
 .addons-control {
-  margin: 20px 0 40px 0;
-
+  margin: 18px 0;
+  &._base{
+    margin-bottom: 0;
+  }
   .radio {
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 0px 13px rgba(0, 0, 0, 50%);
     background: #454857;
-    padding: 4px;
-    border-radius: 3px;
+    border-radius: 6px;
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -99,7 +110,7 @@ button {
     appearance: none;
     outline: none;
     cursor: pointer;
-    border-radius: 2px;
+    border-radius: 6px;
     padding: 4px 8px;
     background: #454857;
     color: #fff;
@@ -111,7 +122,7 @@ button {
   }
 
   .radio label._selected {
-    background: linear-gradient(-40deg, #4e3173, #8558a2);
+    background: linear-gradient(-40deg, #3885c7, #6358a2d9);
     color: #fff;
     box-shadow: 0 1px 1px #0000002e;
     text-shadow: 0 1px 0px #79485f7a;

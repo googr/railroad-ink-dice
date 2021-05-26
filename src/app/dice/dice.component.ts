@@ -31,7 +31,7 @@ export class DiceComponent implements OnInit {
     const randomIndex = Math.floor(Math.random() * dice.faces.length);
     this._randomIndex = randomIndex;
     return dice.faces[randomIndex];
-    // return dice.faces[2];
+    // return dice.faces[5];
   }
 
   public roll() {

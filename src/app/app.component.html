@@ -1,6 +1,28 @@
 <div class="main-bg-wrapper"
-     [ngClass]="{ '_red': _selectedAddon == (_addonEnum.volcano) || _selectedAddon == (_addonEnum.meteor)}">
+     [ngClass]="{
+     '_red': _selectedAddon == (_addonEnum.volcano) || _selectedAddon == (_addonEnum.meteor),
+     '_green': _selectedAddon == _addonEnum.forest,
+     '_yellow': _selectedAddon == _addonEnum.desert
+   }">
   <div class="main">
+    <div class="addons-control _base">
+      <div class="radio">
+          <label [ngClass]="{'_selected': _selectedBase == _addonEnum.base}">
+            {{_addonEnum.base}}
+            <input type="radio"
+                   name="{{_addonEnum.base}}"
+                   value="{{_addonEnum.base}}"
+                   [(ngModel)]="_selectedBase" (ngModelChange)="_rollDices()"/>
+          </label>
+        <label [ngClass]="{'_selected': _selectedBase == _addonEnum.challenge}">
+          {{_addonEnum.challenge}}
+          <input type="radio"
+                 name="{{_addonEnum.challenge}}"
+                 value="{{_addonEnum.challenge}}"
+                 [(ngModel)]="_selectedBase" (ngModelChange)="_rollDices()"/>
+        </label>
+      </div>
+    </div>
     <div class="addons-control">
       <div class="radio">
         <ng-container *ngFor="let addon of _addons; let first = first">
@@ -17,8 +39,15 @@
     <div class="dice-tray">
       <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.baseA"></app-dice>
       <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.baseA"></app-dice>
-      <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.baseA"></app-dice>
-      <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.baseB"></app-dice>
+      <ng-container *ngIf="_selectedBase == _addonEnum.base">
+        <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.baseA"></app-dice>
+        <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.baseB"></app-dice>
+      </ng-container>
+      <ng-container *ngIf="_selectedBase == _addonEnum.challenge">
+        <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.challengeC"></app-dice>
+        <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.challengeD"></app-dice>
+      </ng-container>
+
       <ng-container *ngIf="_selectedAddon == _addonEnum.river">
         <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.river"></app-dice>
         <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.river"></app-dice>
@@ -34,6 +63,14 @@
       <ng-container *ngIf="_selectedAddon == _addonEnum.meteor">
         <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.meteorA"></app-dice>
         <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.meteorB"></app-dice>
+      </ng-container>
+      <ng-container *ngIf="_selectedAddon == _addonEnum.forest">
+        <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.forest"></app-dice>
+        <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.forest"></app-dice>
+      </ng-container>
+      <ng-container *ngIf="_selectedAddon == _addonEnum.desert">
+        <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.desertA"></app-dice>
+        <app-dice [visiblePreviousRoll]="_visiblePreviousRoll" [dice]="_dices.desertB"></app-dice>
       </ng-container>
     </div>
     <button *ngIf="!_visiblePreviousRoll" (click)="_rollDices()">ROLL</button>

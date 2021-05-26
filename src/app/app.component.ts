@@ -4,10 +4,14 @@ import {DiceComponent} from './dice/dice.component';
 
 enum AddonEnum {
   base = 'Base',
-  river = 'River',
-  lake = 'Lake',
+  challenge = 'Challenge',
+  river = 'Rivers',
+  lake = 'Lakes',
   volcano = 'Volcano',
   meteor = 'Meteor',
+  desert = 'Desert',
+  forest = 'Forest',
+
 }
 
 @Component({
@@ -19,8 +23,18 @@ export class AppComponent {
   @ViewChildren(DiceComponent) diceComponents: QueryList<DiceComponent>;
 
   _addonEnum = AddonEnum;
-  _addons: string[] = [AddonEnum.river, AddonEnum.lake, AddonEnum.volcano, AddonEnum.meteor];
+  _addons: string[] = [
+    AddonEnum.river,
+    AddonEnum.lake,
+    AddonEnum.forest,
+    AddonEnum.desert,
+    AddonEnum.volcano,
+    AddonEnum.meteor
+  ];
   _selectedAddon = AddonEnum.river;
+
+  _selectedBase = AddonEnum.base;
+
   _visiblePreviousRoll = false;
 
   _dices: { [key: string]: Dice; } = {
@@ -45,6 +59,32 @@ export class AppComponent {
         {posX: '-604px', posY: '-63px'},
         {posX: '-612px', posY: '-248px'},
         {posX: '-612px', posY: '-807px'}
+      ]
+    },
+    challengeC: {
+      name: 'Challenge C',
+      backgroundUrl: './assets/dice-base-c.jpg',
+      borderColor: 'gray',
+      faces: [
+        {posX: '-337px', posY: '-34px'},
+        {posX: '-463px', posY: '-34px'},
+        {posX: '-605px', posY: '-34px'},
+        {posX: '-730px', posY: '-34px'},
+        {posX: '-864px', posY: '-36px'},
+        {posX: '-1000px', posY: '-34px'}
+      ]
+    },
+    challengeD: {
+      name: 'Challenge D',
+      backgroundUrl: './assets/dice-base-d.jpg',
+      borderColor: 'gray',
+      faces: [
+        {posX: '-333px', posY: '-34px'},
+        {posX: '-467px', posY: '-34px'},
+        {posX: '-600px', posY: '-34px'},
+        {posX: '-736px', posY: '-37px'},
+        {posX: '-870px', posY: '-39px'},
+        {posX: '-1002px', posY: '-34px'}
       ]
     },
     river: {
@@ -111,10 +151,53 @@ export class AppComponent {
         {posX: '-2088px', posY: '-250px'},
         {posX: '-2088px', posY: '-250px'}
       ]
+    },
+    forest: {
+      name: 'Forest',
+      backgroundUrl: './assets/dice-green.jpg',
+      borderColor: 'green',
+      faces: [
+        {posX: '-327px', posY: '-79px'},
+        {posX: '-464px', posY: '-79px'},
+        {posX: '-604px', posY: '-81px'},
+        {posX: '-735px', posY: '-81px'},
+        {posX: '-876px', posY: '-78px'},
+        {posX: '-1008px', posY: '-78px'}
+      ]
+    },
+    desertA: {
+      name: 'Desert A',
+      backgroundUrl: './assets/dice-yellow-1.jpg',
+      borderColor: 'brow',
+      faces: [
+        {posX: '-327px', posY: '-79px'},
+        {posX: '-464px', posY: '-79px'},
+        {posX: '-604px', posY: '-77px'},
+        {posX: '-731px', posY: '-76px'},
+        {posX: '-868px', posY: '-82px'},
+        {posX: '-1000px', posY: '-74px'}
+      ]
+    },
+    desertB: {
+      name: 'Desert B',
+      backgroundUrl: './assets/dice-yellow-2.jpg',
+      borderColor: 'brow',
+      faces: [
+        {posX: '-327px', posY: '-79px'},
+        {posX: '-464px', posY: '-79px'},
+        {posX: '-598px', posY: '-77px'},
+        {posX: '-730px', posY: '-85px'},
+        {posX: '-868px', posY: '-82px'},
+        {posX: '-1008px', posY: '-75px'}
+      ]
     }
   };
 
   _addonChanged() {
+    this._rollDices();
+  }
+
+  _baseChandge() {
     this._rollDices();
   }
 
