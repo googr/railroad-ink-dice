@@ -1,0 +1,47 @@
+@import "../../styles";
+.rules-controls, app-rules{
+  position: relative;
+}
+._back{
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+  background: @base-gradient;
+  padding: 4px 12px;
+  color: #fff;
+  font-size: 14px;
+  opacity: 0.9;
+}
+.rules-controls{
+  display: flex;
+  flex-wrap: wrap;
+  background: #454857;
+  > .rules-button{
+    text-align: center;
+    width: auto;
+    height: 100%;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    padding: 4px 12px;
+    color: #fff;
+    font-size: 14px;
+    transition: all 100ms linear;
+      &._blue {
+        background: @blue-gradient;
+      }
+      &._red{
+        background: @red-gradient;
+      }
+      &._green{
+        background: @green-gradient;
+      }
+      &._yellow{
+        background: @yellow-gradient;
+      }
+      &._pnp{
+        background: @base-gradient;
+      }
+  }
+}
